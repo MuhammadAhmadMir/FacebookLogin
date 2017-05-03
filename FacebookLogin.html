@@ -26,7 +26,6 @@
 				FB.AppEvents.logPageView();
 				
 				//check login status
-				document.write("Connecting with Facebook...");
 				FB.getLoginStatus(function(response) {
 					statusChangeCallback(response);
 					console.log(response);

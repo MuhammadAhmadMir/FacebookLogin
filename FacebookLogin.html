@@ -28,14 +28,13 @@
 				//check login status
 				document.write("Connecting with Facebook...");
 				FB.getLoginStatus(function(response) {
-					statusChangeCallback(response);
 					if(response.status === 'connected'){
 						document.write("You are connected.");
 					}
 					else{
-						FB.Login();
+						document.write(response.status);
+						statusChangeCallback(response);
 					}
-					document.write(response.status);
 					console.log(response.status);
 				});
 			};

@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Continue with Facebook</title>
+		<title>Facebook Login JavaScript Example</title>
 		<meta charset="UTF-8">
 	</head>
 	<body>
-	<div id="fb-root"></div>
-	<script>
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.src = "https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=504287983295229";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));</script>
 		
-		<div class="fb-login-button" 
-		data-max-rows="1" 
-		data-size="large" 
-		data-button-type="continue_with" 
-		data-show-faces="false" 
-		data-auto-logout-link="false" 
-		data-use-continue-as="true"></div>
+		<script>
+			//loading facebook SDK
+			(function(d, s, id){
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) {return;}
+				js = d.createElement(s); js.id = id;
+				js.src = "https://connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+			
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId      : '504287983295229',
+					cookie     : true,
+					xfbml      : true,
+					version    : 'v2.9'
+				});
+				FB.AppEvents.logPageView();
+				
+				//check login status
+				function checkLoginState(){
+					FB.getLoginStatus(function(response) {
+						statusChangeCallback(response);
+						console.log(response);
+					});
+				};
+			};
+	</script>
+	
+	<fb:login-button 
+		scope="public_profile,email"
+		onlogin="checkLoginState();">
+	</fb:login-button>
+	<div id="status"></div>
 	</body>
 </html>

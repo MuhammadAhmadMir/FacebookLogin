@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Facebook Login JavaScript Example</title>
+		<meta charset="UTF-8">
+	</head>
+	<body>
+		
+		<script>
+			//loading facebook SDK
+			(function(d, s, id){
+				var js, fjs = d.getElementsByTagName(s)[0];
+				if (d.getElementById(id)) {return;}
+				js = d.createElement(s); js.id = id;
+				js.src = "https://connect.facebook.net/en_US/sdk.js";
+				fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));
+			
+			window.fbAsyncInit = function() {
+				FB.init({
+					appId      : '504287983295229',
+					cookie     : true,
+					xfbml      : true,
+					version    : 'v2.8'
+				});
+				FB.AppEvents.logPageView();
+				FB.getLoginStatus(function(response) {
+					statusChangeCallback(response);
+					document.write(response.status);
+					console.log(response.status);
+				});
+			};
+	</script>
+	
+	<fb:login-button 
+		scope="public_profile,email"
+		onlogin="checkLoginState();">
+	</fb:login-button>
+	<div id="status"></div>
+	</body>
+</html>

@@ -13,53 +13,56 @@
 
 <body>
   <body>
-  <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=504287983295229";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-</script>
-<div class="container">
-	<section id="content">
+	<div id="fb-root"></div>
+	<script>
+		function checkLoginState() {
+			FB.getLoginStatus(function(response) {
+				statusChangeCallback(response);
+			});
+		};
 		
-		<form action="">
-		<h1>Login Form</h1>
-		<table>
-		<tr>
-		<td>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=504287983295229";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<div class="container">
+		<section id="content">
 		
-			<div>
-				<input type="text" placeholder="Username" required="" id="username" />
-			</div>
-			<div>
-				<input type="password" placeholder="Password" required="" id="password" />
-			</div>
+			<form action="">
+				<h1>Login Form</h1>
+				<table>
+					<tr>
+						<td>
 			
-			<div>
-				<input type="submit" value="Log in" />
-				<a href="#">Lost your password?</a>
-				<a href="#">Register</a>
-			</div>
-		
-		</td>
-		<td style="text-align: right !important;" valign="top">
-				<div style="margin-left: 80px;" class="fb-login-button" data-max-rows="1" 
-				data-size="large" data-button-type="login_with" 
-				data-show-faces="false" data-auto-logout-link="false" 
-				data-use-continue-as="false"
-				onlogin="checkLoginState();"></div>
+							<div>
+								<input type="text" placeholder="Username" required="" id="username" />
+							</div>
+							<div>
+								<input type="password" placeholder="Password" required="" id="password" />
+							</div>
 			
-			</td>
-			</tr>
-			</table>
+							<div>
+								<input type="submit" value="Log in" />
+								<a href="#">Lost your password?</a>
+								<a href="#">Register</a>
+							</div>
+		
+						</td>
+						<td style="text-align: right !important;" valign="top">
+							<div style="margin-left: 80px;" class="fb-login-button" data-max-rows="1" 
+								data-size="large" data-button-type="login_with" 
+								data-show-faces="false" data-auto-logout-link="false" 
+								data-use-continue-as="false"
+								onlogin="checkLoginState();">
+							</div>
+			
+						</td>
+					</tr>
+				</table>
 			</form><!-- form -->
 			
 			

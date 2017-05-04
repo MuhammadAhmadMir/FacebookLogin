@@ -25,7 +25,11 @@
 			if (response.status === 'connected') {
 				// Logged into your app and Facebook.
 				window.location = "https://muhammadahmadmir.github.io/FacebookLogin/index.html";
-			} else {
+			}
+			else if (response.status === 'unknown'){
+				window.location = "https://muhammadahmadmir.github.io/FacebookLogin/login.html";
+			}
+			else {
 				// The person is not logged into your app or we are unable to tell.
 				document.getElementById('status').innerHTML = 'Please log ' +
 				'into this app.';

@@ -20,7 +20,13 @@
   js = d.createElement(s); js.id = id;
   js.src = "https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.9&appId=504287983295229";
   fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+}(document, 'script', 'facebook-jssdk'));
+function checkLoginState() {
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+</script>
 <div class="container">
 	<section id="content">
 		

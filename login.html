@@ -2,7 +2,7 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Check for Login</title>
+  <title>Login  - Test App</title>
   
   
   
@@ -24,12 +24,11 @@
 			// for FB.getLoginStatus().
 			if (response.status === 'connected') {
 				// Logged into your app and Facebook.
-				successMessage();
+				testAPI();
 			} else {
 				// The person is not logged into your app or we are unable to tell.
-				//document.getElementById('status').innerHTML = 'Please log ' +
-				//'into this app.';
-				redirectToLoginPage();
+				document.getElementById('status').innerHTML = 'Please log ' +
+				'into this app.';
 			}
 		};
 	
@@ -77,25 +76,47 @@
 				'Thanks for logging in, ' + response.name + '!';
 			});
 		};
-		
-		function successMessage(){
-			console.log('Welcome!  Fetching your information.... ');
-			FB.api('/me', function(response) {
-				console.log('Successful login for: ' + response.name);
-				document.getElementById('status').innerHTML =
-				'Thanks for logging in, ' + response.name + '!';
-			});
-		};
-		
-		function redirectToLoginPage(){
-			window.location = "https://muhammadahmadmir.github.io/FacebookLogin/login.html";
-		};
-		
-		window.load(checkLoginState);
 	</script>
 	<div class="container">
 		<section id="content">
-		<div id="status"></div>
+		
+			<form action="">
+				<h1>Login Form</h1>
+				<table>
+					<tr>
+						<td>
+			
+							<div>
+								<input type="text" placeholder="Username" required="" id="username" />
+							</div>
+							<div>
+								<input type="password" placeholder="Password" required="" id="password" />
+							</div>
+			
+							<div>
+								<input type="submit" value="Log in" />
+								<a href="#">Lost your password?</a>
+								<a href="#">Register</a>
+							</div>
+		
+						</td>
+						<td style="text-align: right !important;" valign="top">
+							<!--<div style="margin-left: 80px;" class="fb-login-button" data-max-rows="1" 
+								data-size="large" data-button-type="login_with" 
+								data-show-faces="false" data-auto-logout-link="false" 
+								data-use-continue-as="false"
+								onlogin="checkLoginState();">
+							</div>-->
+							
+							<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+							</fb:login-button>
+			
+						</td>
+					</tr>
+				</table>
+			</form><!-- form -->
+			
+			
 		<!--<div class="button">
 			<a href="#">Download source file</a>
 		</div><!-- button -->

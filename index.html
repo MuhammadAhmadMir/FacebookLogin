@@ -25,6 +25,7 @@
 			if (response.status === 'connected') {
 				// Logged into your app and Facebook.
 				successMessage();
+				basicAPIRequest();
 			} else {
 				// The person is not logged into your app or we are unable to tell.
 				//document.getElementById('status').innerHTML = 'Please log ' +
@@ -91,7 +92,23 @@
 			window.location = "https://muhammadahmadmir.github.io/FacebookLogin/login.html";
 		};
 		
+		function basicAPIRequest() {
+			FB.api('/me', 
+				{fields: "id,about,age_range,picture,bio,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"}, 
+				function(response) {
+					console.log('API response', response);
+					$("#fb-profile-picture").append('<img src="' + response.picture.data.url + '"> ');
+					$("#name").append(response.name);
+					$("#user-id").append(response.id);
+					$("#work").append(response.gender);
+					$("#birthday").append(response.birthday);
+					$("#education").append(response.hometown);
+				}
+			);
+		}
+		
 		window.load(checkLoginState);
+		
 	</script>
 	<div class="container">
 		<div id="status" style="color: green; font-size: 18px; text-align: center;"></div>
@@ -99,6 +116,11 @@
 </body>
   
     <script src="js/index.js"></script>
-
+	<div id="#fb-profile-picture"></div>
+	<div id="#name"></div>
+	<div id="#user-id"></div>
+	<div id="#work"></div>
+	<div id="#birthday"></div>
+	<div id="#education"></div>
 </body>
 </html>

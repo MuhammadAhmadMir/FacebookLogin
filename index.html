@@ -112,7 +112,9 @@
 			);
 		}
 		
-		window.load(checkLoginState);
+		 $(window).on('load', function () {
+			 checkLoginState();
+ 		});
 		
 	</script>
 	<div class="container">

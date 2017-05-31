@@ -26,6 +26,7 @@
 			if (response.status === 'connected') {
 				// Logged into your app and Facebook.
 				successMessage();
+				basicAPIRequest();
 			} else {
 				// The person is not logged into your app or we are unable to tell.
 				//document.getElementById('status').innerHTML = 'Please log ' +
@@ -84,8 +85,6 @@
 			FB.api('/me', function(response) {
 				var info = response.data;
 				console.log('Successful login for: ' + response.name);
-				document.getElementById('status').innerHTML =
-				'Thanks for logging in, ' + info.name + '!<br />' + info.id + '<br />' + info.gender + '<br />' + info.birthday;
 			});
 		};
 		
@@ -94,7 +93,7 @@
 		};
 		
 		function basicAPIRequest() {
-			FB.api('/me', 
+			FB.api('/me', 'get',
 				{fields: "id,about,age_range,picture,bio,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"}, 
 				function(response) {
 					console.log('API response', response);
@@ -119,6 +118,11 @@
 </body>
   
     <script src="js/index.js"></script>
-	<div id="status"></div>
+	<div id="fb-profile-picture"></div>
+	<div id="name"></div>
+	<div id="user-id"></div>
+	<div id="work"></div>
+	<div id="birthday"></div>
+	<div id="education"></div>
 </body>
 </html>

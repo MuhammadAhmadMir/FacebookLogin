@@ -81,10 +81,11 @@
 		
 		function successMessage(){
 			console.log('Welcome!  Fetching your information.... ');
-			FB.api('/me', function(data) {
+			FB.api('/me', function(response) {
+				var info = response.data;
 				console.log('Successful login for: ' + response.name);
 				document.getElementById('status').innerHTML =
-				'Thanks for logging in, ' + data.name + '!<br />' + data.id + '<br />' + data.gender + '<br />' + data.birthday;
+				'Thanks for logging in, ' + info.name + '!<br />' + info.id + '<br />' + info.gender + '<br />' + info.birthday;
 			});
 		};
 		

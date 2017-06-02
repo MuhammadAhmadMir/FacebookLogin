@@ -38,7 +38,7 @@
 		function checkLoginState() {
 			FB.getLoginStatus(function(response) {
 				statusChangeCallback(response);
-			}, { scope: 'email,user_birthday,user_location,user_hometown' });
+			});
 		};
 		
 		window.fbAsyncInit = function() {

@@ -21,21 +21,38 @@
 					appId      : '504287983295229',
 					cookie     : true,
 					xfbml      : true,
-					version    : 'v2.8'
+					version    : 'v2.9'
 				});
 				FB.AppEvents.logPageView();
-				FB.getLoginStatus(function(response) {
-					statusChangeCallback(response);
-					document.write(response.status);
-					console.log(response.status);
-				});
+				
+				//check login status
+				function checkLoginState(){
+					FB.getLoginStatus(function(response) {
+						statusChangeCallback(response);
+						console.log(response);
+					});
+				};
+				
+				function fbLogoutUser() {
+					FB.getLoginStatus(function(response) {
+						if (response && response.status === 'connected') {
+							FB.logout(function(response) {
+								document.location.reload();
+							});
+						}
+					});
+				};
 			};
 	</script>
 	
-	<fb:login-button 
+	<!--<fb:login-button 
 		scope="public_profile,email"
 		onlogin="checkLoginState();">
-	</fb:login-button>
+	</fb:login-button>-->
+	
+	
+	<input type="button" value="Logout" onclick="fbLogoutUser();" />
+	
 	<div id="status"></div>
 	</body>
 </html>

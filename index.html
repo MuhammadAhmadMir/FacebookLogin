@@ -103,9 +103,10 @@
 					$("#user-id").append(response.id);
 					$("#work").append(response.gender);
 					$("#birthday").append(response.user_birthday);
-					$("#hometown").append(response.hometown);
-					$("#location").append(response.user_location);
+					$("#hometown").append(response.hometown.name);
+					$("#location").append(response.user_location.name);
 					$("#age").append(response.age_range);
+					$("#email").append(response.email);
 				}
 			);
 		}
@@ -124,6 +125,7 @@
 	<div id="fb-profile-picture"></div>
 	<div id="name">Name: </div>
 	<div id="user-id">ID: </div>
+	<div id="email">Email: </div>
 	<div id="location">Location: </div>
 	<div id="work">Gender: </div>
 	<div id="birthday">Birthday: </div>

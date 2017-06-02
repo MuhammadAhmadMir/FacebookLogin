@@ -98,13 +98,14 @@
 				function(response) {
 					console.log('API response', response);
 					var hometown = response.hometown.name;
+					var location = response.location.name;
 					$("#fb-profile-picture").append('<img src="' + response.picture.data.url + '"> ');
 					$("#name").append(response.name);
 					$("#user-id").append(response.id);
 					$("#work").append(response.gender);
 					$("#birthday").append(response.user_birthday);
 					$("#hometown").append(hometown);
-					$("#location").append(response.user_location);
+					$("#location").append(location);
 					$("#age").append(response.age_range);
 					$("#email").append(response.email);
 					$("#link").append(response.link);

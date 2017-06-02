@@ -94,7 +94,7 @@
 		
 		function basicAPIRequest() {
 			//"id,about,age_range,picture,bio,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"
-			FB.api('/me',
+			FB.api('/me', 'GET',
 				{fields: "id,picture,birthday,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"}, 
 				function(response) {
 					console.log('API response', response);
@@ -103,7 +103,9 @@
 					$("#user-id").append(response.id);
 					$("#work").append(response.gender);
 					$("#birthday").append(response.birthday);
-					$("#education").append(response.hometown);
+					$("#hometown").append(response.hometown);
+					$("#location").append(response.location);
+					$("#age").append(response.age_range);
 				}
 			);
 		}
@@ -120,10 +122,12 @@
   
     <script src="js/index.js"></script>
 	<div id="fb-profile-picture"></div>
-	<div id="name"></div>
-	<div id="user-id"></div>
-	<div id="work"></div>
-	<div id="birthday"></div>
-	<div id="education"></div>
+	<div id="name">Name: </div>
+	<div id="user-id">ID: </div>
+	<div id="location">Location: </div>
+	<div id="work">Gender: </div>
+	<div id="birthday">Birthday: </div>
+	<div id="hometown">Hometown: </div>
+	<div id="age">Age: </div>
 </body>
 </html>
